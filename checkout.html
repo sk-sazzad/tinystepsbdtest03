@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>চেকআউট - TinyStepsBD</title>
+    <meta name="description" content="আপনার অর্ডার সম্পন্ন করুন। নিরাপদ এবং সহজ চেকআউট প্রক্রিয়া।">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="assets/images/logo.png" alt="TinyStepsBD Logo" class="logo">
+                <span class="brand-name">TinyStepsBD</span>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">হোম</a></li>
+                    <li class="nav-item"><a href="shop.html" class="nav-link">প্রোডাক্ট</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">আমাদের সম্পর্কে</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">যোগাযোগ</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="cart-icon-container">
+                    <a href="cart.html" class="cart-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    
+                    <div class="cart-preview-dropdown">
+                        <div class="cart-preview-header">
+                            <h4>আপনার কার্ট</h4>
+                        </div>
+                        <div class="cart-preview-items">
+                            <div class="empty-cart-message">
+                                আপনার কার্টে কোনো প্রোডাক্ট নেই
+                            </div>
+                        </div>
+                        <div class="cart-preview-footer">
+                            <div class="cart-total">
+                                মোট: ৳<span class="total-amount">0</span>
+                            </div>
+                            <div class="cart-actions">
+                                <a href="cart.html" class="view-cart-btn">কার্ট দেখুন</a>
+                                <a href="checkout.html" class="checkout-btn">চেকআউট</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Checkout Progress -->
+        <section class="checkout-progress">
+            <div class="container">
+                <div id="checkout-progress" class="progress-steps">
+                    <div class="progress-step active">
+                        <div class="step-number">1</div>
+                        <div class="step-label">তথ্য</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-number">2</div>
+                        <div class="step-label">রিভিউ</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-number">3</div>
+                        <div class="step-label">কনফার্ম</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checkout Section -->
+        <section class="checkout-section">
+            <div class="container">
+                <h1 class="page-title">চেকআউট</h1>
+                
+                <div class="checkout-layout">
+                    <!-- Checkout Form -->
+                    <div class="checkout-form-section">
+                        <form id="checkout-form" class="checkout-form">
+                            <!-- Customer Information -->
+                            <div class="form-section">
+                                <h3 class="form-section-title">
+                                    <i class="fas fa-user"></i>
+                                    গ্রাহক তথ্য
+                                </h3>
+                                
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="customer_name" class="form-label">পুরো নাম *</label>
+                                        <input type="text" id="customer_name" name="customer_name" class="form-control" required data-field="customer_name">
+                                        <div class="form-help">আপনার পুরো নাম লিখুন</div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">মোবাইল নম্বর *</label>
+                                        <input type="tel" id="phone" name="phone" class="form-control" required data-field="phone">
+                                        <div class="form-help">আপনার সঠিক মোবাইল নম্বর লিখুন</div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">ইমেইল ঠিকানা</label>
+                                        <input type="email" id="email" name="email" class="form-control" data-field="email">
+                                        <div class="form-help">অর্ডার আপডেটের জন্য (ঐচ্ছিক)</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Delivery Address -->
+                            <div class="form-section">
+                                <h3 class="form-section-title">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    ডেলিভারি ঠিকানা
+                                </h3>
+                                
+                                <div class="form-group">
+                                    <label for="address" class="form-label">সম্পূর্ণ ঠিকানা *</label>
+                                    <textarea id="address" name="address" class="form-control" rows="4" required data-field="address" placeholder="বাসা/হোল্ডিং নম্বর, রোড/গ্রাম, থানা, জেলা"></textarea>
+                                    <div class="form-help">বিস্তারিত ঠিকানা লিখুন যাতে ডেলিভারি সহজ হয়</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="special_notes" class="form-label">বিশেষ নির্দেশনা (ঐচ্ছিক)</label>
+                                    <textarea id="special_notes" name="special_notes" class="form-control" rows="3" placeholder="ডেলিভারির জন্য বিশেষ কোনো নির্দেশনা থাকলে লিখুন"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Payment Method -->
+                            <div class="form-section">
+                                <h3 class="form-section-title">
+                                    <i class="fas fa-credit-card"></i>
+                                    পেমেন্ট মেথড
+                                </h3>
+                                
+                                <div class="payment-methods">
+                                    <div class="payment-method selected">
+                                        <div class="method-header">
+                                            <input type="radio" id="cod" name="payment_method" value="Cash on Delivery" checked>
+                                            <label for="cod" class="method-label">
+                                                <i class="fas fa-money-bill-wave"></i>
+                                                ক্যাশ অন ডেলিভারি
+                                            </label>
+                                        </div>
+                                        <div class="method-description">
+                                            প্রোডাক্ট ডেলিভারির সময় নগদ টাকা প্রদান করুন
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Terms and Conditions -->
+                            <div class="form-section">
+                                <div class="terms-agreement">
+                                    <input type="checkbox" id="terms" name="terms" required>
+                                    <label for="terms" class="terms-label">
+                                        আমি 
+                                        <a href="terms.html" target="_blank">সেবার শর্তাবলী</a> 
+                                        এবং 
+                                        <a href="privacy.html" target="_blank">প্রাইভেসি পলিসি</a> 
+                                        পড়েছি এবং সম্মতি দিচ্ছি *
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="form-actions">
+                                <a href="cart.html" class="btn btn-outline">
+                                    <i class="fas fa-arrow-left"></i>
+                                    কার্টে ফিরে যান
+                                </a>
+                                <button type="submit" class="btn btn-primary btn-submit">
+                                    <i class="fas fa-lock"></i>
+                                    অর্ডার কনফার্ম করুন
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="checkout-summary-section">
+                        <div class="order-summary-card">
+                            <h3 class="summary-title">আপনার অর্ডার</h3>
+                            
+                            <div id="order-summary">
+                                <!-- Order summary will be loaded dynamically -->
+                            </div>
+
+                            <div class="support-info">
+                                <div class="support-item">
+                                    <i class="fas fa-headset"></i>
+                                    <div class="support-details">
+                                        <strong>সাহায্য প্রয়োজন?</strong>
+                                        <p>আমাদের কল করুন: +880 1XXX-XXXXXX</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="support-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <div class="support-details">
+                                        <strong>১০০% নিরাপদ</strong>
+                                        <p>আপনার তথ্য নিরাপদে থাকবে</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Features -->
+        <section class="security-features">
+            <div class="container">
+                <div class="security-grid">
+                    <div class="security-item">
+                        <i class="fas fa-lock"></i>
+                        <h4>নিরাপদ পেমেন্ট</h4>
+                        <p>ক্যাশ অন ডেলিভারি মাধ্যমে সম্পূর্ণ ঝুঁকিমুক্ত</p>
+                    </div>
+                    <div class="security-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>ডেটা প্রোটেকশন</h4>
+                        <p>আপনার তথ্য কখনো শেয়ার করা হয় না</p>
+                    </div>
+                    <div class="security-item">
+                        <i class="fas fa-truck"></i>
+                        <h4>দ্রুত ডেলিভারি</h4>
+                        <p>অর্ডার কনফার্ম হওয়ার পর ২-৩ দিনে ডেলিভারি</p>
+                    </div>
+                    <div class="security-item">
+                        <i class="fas fa-undo"></i>
+                        <h4>সহজ রিটার্ন</h4>
+                        <p>৭ দিনের মধ্যে সমস্যা হলে রিটার্ন সুবিধা</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column brand-info">
+                <div class="footer-logo">
+                    <img src="assets/images/logo.png" alt="TinyStepsBD Logo" class="footer-logo-img">
+                    <span class="footer-brand-name">TinyStepsBD</span>
+                </div>
+                <p class="footer-tagline">আপনার শিশুর প্রথম পদচিহ্নের সঙ্গী</p>
+                <p class="footer-description">
+                    টিনিস্টেপসবিডি - বাংলাদেশের সেরা বেবি জুতা ও স্যান্ডেলের নির্ভরযোগ্য ব্র্যান্ড। 
+                    আমরা ৩ মাস থেকে ৬ বছর বয়সী শিশুদের জন্য উচ্চমানের, আরামদায়ক এবং স্টাইলিশ 
+                    ফুটওয়্যার সরবরাহ করি।
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column quick-links">
+                <h3 class="footer-title">দ্রুত লিংক</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html" class="footer-link">হোমপেজ</a></li>
+                    <li><a href="shop.html" class="footer-link">সকল প্রোডাক্ট</a></li>
+                    <li><a href="about.html" class="footer-link">আমাদের গল্প</a></li>
+                    <li><a href="contact.html" class="footer-link">যোগাযোগ করুন</a></li>
+                    <li><a href="privacy.html" class="footer-link">প্রাইভেসি পলিসি</a></li>
+                    <li><a href="terms.html" class="footer-link">সেবার শর্তাবলী</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column product-categories">
+                <h3 class="footer-title">প্রোডাক্ট ক্যাটাগরি</h3>
+                <ul class="footer-links">
+                    <li><a href="shop.html?category=boys" class="footer-link">ছেলেদের জুতা</a></li>
+                    <li><a href="shop.html?category=girls" class="footer-link">মেয়েদের জুতা</a></li>
+                    <li><a href="shop.html?category=sandals" class="footer-link">বেবি স্যান্ডেল</a></li>
+                    <li><a href="shop.html?category=new" class="footer-link">নতুন অ্যারাইভাল</a></li>
+                    <li><a href="shop.html?category=best" class="footer-link">বেস্টসেলার</a></li>
+                    <li><a href="shop.html?category=offer" class="footer-link">স্পেশাল অফার</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h3 class="footer-title">যোগাযোগ ও সাপোর্ট</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+880 1XXX-XXXXXX</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@tinystepsbd.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>ঢাকা, বাংলাদেশ</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>সকাল ৯টা - রাত ১০টা</span>
+                    </div>
+                </div>
+                
+                <div class="whatsapp-subscribe">
+                    <h4>হোয়াটসঅ্যাপে আপডেট পান</h4>
+                    <form class="subscribe-form">
+                        <input type="tel" placeholder="আপনার মোবাইল নম্বর" class="phone-input" required>
+                        <button type="submit" class="subscribe-btn">সাবস্ক্রাইব করুন</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p class="copyright">
+                    &copy; 2024 TinyStepsBD. সকল অধিকার সংরক্ষিত।
+                </p>
+                <div class="payment-methods">
+                    <span>পেমেন্ট মেথড:</span>
+                    <span class="payment-badge">ক্যাশ অন ডেলিভারি</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Help Button -->
+    <div class="whatsapp-help">
+        <a href="https://wa.me/880XXXXXXXXX" class="whatsapp-link" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/data-manager.js"></script>
+    <script src="assets/js/product.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/checkout.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

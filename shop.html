@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সকল প্রোডাক্ট - TinyStepsBD</title>
+    <meta name="description" content="বেবি জুতা ও স্যান্ডেলের সম্পূর্ণ কালেকশন ব্রাউজ করুন। ছেলেদের জুতা, মেয়েদের জুতা, বেবি স্যান্ডেল এবং আরও অনেক কিছু।">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="assets/images/logo.png" alt="TinyStepsBD Logo" class="logo">
+                <span class="brand-name">TinyStepsBD</span>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">হোম</a></li>
+                    <li class="nav-item"><a href="shop.html" class="nav-link active">প্রোডাক্ট</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">আমাদের সম্পর্কে</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">যোগাযোগ</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="cart-icon-container">
+                    <a href="cart.html" class="cart-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    
+                    <div class="cart-preview-dropdown">
+                        <div class="cart-preview-header">
+                            <h4>আপনার কার্ট</h4>
+                        </div>
+                        <div class="cart-preview-items">
+                            <div class="empty-cart-message">
+                                আপনার কার্টে কোনো প্রোডাক্ট নেই
+                            </div>
+                        </div>
+                        <div class="cart-preview-footer">
+                            <div class="cart-total">
+                                মোট: ৳<span class="total-amount">0</span>
+                            </div>
+                            <div class="cart-actions">
+                                <a href="cart.html" class="view-cart-btn">কার্ট দেখুন</a>
+                                <a href="checkout.html" class="checkout-btn">চেকআউট</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">সকল প্রোডাক্ট</h1>
+                <p class="page-subtitle">আমাদের সম্পূর্ণ কালেকশন থেকে আপনার পছন্দের প্রোডাক্ট খুঁজে নিন</p>
+            </div>
+        </section>
+
+        <!-- Shop Controls -->
+        <section class="shop-controls">
+            <div class="container">
+                <div class="controls-grid">
+                    <!-- Search Box -->
+                    <div class="search-box">
+                        <input type="text" id="product-search" placeholder="প্রোডাক্ট খুঁজুন..." class="search-input">
+                        <button type="button" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div class="category-filter">
+                        <select id="category-select" class="filter-select">
+                            <option value="">সকল ক্যাটাগরি</option>
+                            <option value="boys">ছেলেদের জুতা</option>
+                            <option value="girls">মেয়েদের জুতা</option>
+                            <option value="sandals">বেবি স্যান্ডেল</option>
+                            <option value="new">নতুন অ্যারাইভাল</option>
+                        </select>
+                    </div>
+
+                    <!-- Sort Options -->
+                    <div class="sort-filter">
+                        <select id="sort-select" class="filter-select">
+                            <option value="default">ডিফল্ট সাজানো</option>
+                            <option value="price-low">দাম: কম থেকে বেশি</option>
+                            <option value="price-high">দাম: বেশি থেকে কম</option>
+                            <option value="name">নাম অনুসারে</option>
+                            <option value="newest">নতুনতম প্রথম</option>
+                        </select>
+                    </div>
+
+                    <!-- View Toggle -->
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Grid -->
+        <section class="products-section">
+            <div class="container">
+                <!-- Loading State -->
+                <div id="products-loading" class="loading-state">
+                    <div class="spinner"></div>
+                    <p>প্রোডাক্ট লোড হচ্ছে...</p>
+                </div>
+
+                <!-- Products Grid -->
+                <div id="products-grid" class="products-grid">
+                    <!-- Products will be loaded dynamically -->
+                </div>
+
+                <!-- No Products State -->
+                <div id="no-products" class="no-products-state" style="display: none;">
+                    <div class="no-products-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>কোনো প্রোডাক্ট পাওয়া যায়নি</h3>
+                    <p>আপনার সার্চ কিওয়ার্ডের সাথে মিলিয়ে কোনো প্রোডাক্ট পাওয়া যায়নি। অনুগ্রহ করে অন্য কিওয়ার্ড দিয়ে চেষ্টা করুন।</p>
+                    <button id="reset-filters" class="btn btn-primary">ফিল্টার রিসেট করুন</button>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="load-more-section">
+                    <button id="load-more" class="btn btn-outline" style="display: none;">
+                        <i class="fas fa-redo"></i>
+                        আরও প্রোডাক্ট লোড করুন
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="shop-features">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h3>দ্রুত ডেলিভারি</h3>
+                        <p>অর্ডার করলে ২-৩ কর্মদিবসের মধ্যে ডেলিভারি</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-undo"></i>
+                        </div>
+                        <h3>সহজ রিটার্ন</h3>
+                        <p>৭ দিনের মধ্যে সহজে রিটার্ন পলিসি</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>অরিজিনাল প্রোডাক্ট</h3>
+                        <p>১০০% অরিজিনাল এবং উচ্চমানের প্রোডাক্ট</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>২৪/৭ সাপোর্ট</h3>
+                        <p>যেকোনো সমস্যায় আমরা আছি আপনার পাশে</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column brand-info">
+                <div class="footer-logo">
+                    <img src="assets/images/logo.png" alt="TinyStepsBD Logo" class="footer-logo-img">
+                    <span class="footer-brand-name">TinyStepsBD</span>
+                </div>
+                <p class="footer-tagline">আপনার শিশুর প্রথম পদচিহ্নের সঙ্গী</p>
+                <p class="footer-description">
+                    টিনিস্টেপসবিডি - বাংলাদেশের সেরা বেবি জুতা ও স্যান্ডেলের নির্ভরযোগ্য ব্র্যান্ড। 
+                    আমরা ৩ মাস থেকে ৬ বছর বয়সী শিশুদের জন্য উচ্চমানের, আরামদায়ক এবং স্টাইলিশ 
+                    ফুটওয়্যার সরবরাহ করি।
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column quick-links">
+                <h3 class="footer-title">দ্রুত লিংক</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html" class="footer-link">হোমপেজ</a></li>
+                    <li><a href="shop.html" class="footer-link">সকল প্রোডাক্ট</a></li>
+                    <li><a href="about.html" class="footer-link">আমাদের গল্প</a></li>
+                    <li><a href="contact.html" class="footer-link">যোগাযোগ করুন</a></li>
+                    <li><a href="privacy.html" class="footer-link">প্রাইভেসি পলিসি</a></li>
+                    <li><a href="terms.html" class="footer-link">সেবার শর্তাবলী</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column product-categories">
+                <h3 class="footer-title">প্রোডাক্ট ক্যাটাগরি</h3>
+                <ul class="footer-links">
+                    <li><a href="shop.html?category=boys" class="footer-link">ছেলেদের জুতা</a></li>
+                    <li><a href="shop.html?category=girls" class="footer-link">মেয়েদের জুতা</a></li>
+                    <li><a href="shop.html?category=sandals" class="footer-link">বেবি স্যান্ডেল</a></li>
+                    <li><a href="shop.html?category=new" class="footer-link">নতুন অ্যারাইভাল</a></li>
+                    <li><a href="shop.html?category=best" class="footer-link">বেস্টসেলার</a></li>
+                    <li><a href="shop.html?category=offer" class="footer-link">স্পেশাল অফার</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h3 class="footer-title">যোগাযোগ ও সাপোর্ট</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+880 1XXX-XXXXXX</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@tinystepsbd.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>ঢাকা, বাংলাদেশ</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>সকাল ৯টা - রাত ১০টা</span>
+                    </div>
+                </div>
+                
+                <div class="whatsapp-subscribe">
+                    <h4>হোয়াটসঅ্যাপে আপডেট পান</h4>
+                    <form class="subscribe-form">
+                        <input type="tel" placeholder="আপনার মোবাইল নম্বর" class="phone-input" required>
+                        <button type="submit" class="subscribe-btn">সাবস্ক্রাইব করুন</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p class="copyright">
+                    &copy; 2024 TinyStepsBD. সকল অধিকার সংরক্ষিত।
+                </p>
+                <div class="payment-methods">
+                    <span>পেমেন্ট মেথড:</span>
+                    <span class="payment-badge">ক্যাশ অন ডেলিভারি</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Help Button -->
+    <div class="whatsapp-help">
+        <a href="https://wa.me/880XXXXXXXXX" class="whatsapp-link" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/data-manager.js"></script>
+    <script src="assets/js/product.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/checkout.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

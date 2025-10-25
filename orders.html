@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমার অর্ডার - TinyStepsBD</title>
+    <meta name="description" content="আপনার সকল অর্ডার দেখুন এবং ট্র্যাক করুন। অর্ডার স্ট্যাটাস এবং বিবরণ দেখুন।">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="assets/images/logo.png" alt="TinyStepsBD Logo" class="logo">
+                <span class="brand-name">TinyStepsBD</span>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">হোম</a></li>
+                    <li class="nav-item"><a href="shop.html" class="nav-link">প্রোডাক্ট</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">আমাদের সম্পর্কে</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">যোগাযোগ</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="cart-icon-container">
+                    <a href="cart.html" class="cart-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    
+                    <div class="cart-preview-dropdown">
+                        <div class="cart-preview-header">
+                            <h4>আপনার কার্ট</h4>
+                        </div>
+                        <div class="cart-preview-items">
+                            <div class="empty-cart-message">
+                                আপনার কার্টে কোনো প্রোডাক্ট নেই
+                            </div>
+                        </div>
+                        <div class="cart-preview-footer">
+                            <div class="cart-total">
+                                মোট: ৳<span class="total-amount">0</span>
+                            </div>
+                            <div class="cart-actions">
+                                <a href="cart.html" class="view-cart-btn">কার্ট দেখুন</a>
+                                <a href="checkout.html" class="checkout-btn">চেকআউট</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">আমার অর্ডার</h1>
+                <p class="page-subtitle">আপনার সকল অর্ডার দেখুন এবং ট্র্যাক করুন</p>
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section class="orders-section">
+            <div class="container">
+                <!-- Orders Filter -->
+                <div class="orders-filter">
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-filter="all">সকল অর্ডার</button>
+                        <button class="filter-btn" data-filter="pending">পেন্ডিং</button>
+                        <button class="filter-btn" data-filter="processing">প্রসেসিং</button>
+                        <button class="filter-btn" data-filter="delivered">ডেলিভার্ড</button>
+                        <button class="filter-btn" data-filter="cancelled">ক্যান্সেল্ড</button>
+                    </div>
+                    
+                    <div class="search-box">
+                        <input type="text" id="order-search" placeholder="অর্ডার আইডি দিয়ে খুঁজুন..." class="search-input">
+                        <button type="button" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Orders List -->
+                <div class="orders-list">
+                    <!-- No Orders State -->
+                    <div class="no-orders">
+                        <div class="no-orders-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <h3>কোনো অর্ডার নেই</h3>
+                        <p>আপনি এখনো কোনো অর্ডার দেননি। আমাদের প্রোডাক্ট ব্রাউজ করে দেখুন এবং আপনার প্রথম অর্ডার দিন।</p>
+                        <a href="shop.html" class="btn btn-primary">প্রোডাক্ট ব্রাউজ করুন</a>
+                    </div>
+
+                    <!-- Orders will be loaded dynamically here -->
+                </div>
+
+                <!-- Order Tracking Modal -->
+                <div id="tracking-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>অর্ডার ট্র্যাকিং</h3>
+                            <button class="modal-close">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="tracking-info">
+                                <div class="tracking-header">
+                                    <div class="order-id">অর্ডার #: <span id="tracking-order-id">-</span></div>
+                                    <div class="order-date">তারিখ: <span id="tracking-order-date">-</span></div>
+                                </div>
+                                
+                                <div class="tracking-timeline">
+                                    <div class="timeline-item completed">
+                                        <div class="timeline-marker">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div class="timeline-content">
+                                            <h4>অর্ডার প্লেসড</h4>
+                                            <p>আপনার অর্ডার সফলভাবে গ্রহণ করা হয়েছে</p>
+                                            <span class="timeline-time">-</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="timeline-item active">
+                                        <div class="timeline-marker">
+                                            <i class="fas fa-cog"></i>
+                                        </div>
+                                        <div class="timeline-content">
+                                            <h4>প্রসেসিং</h4>
+                                            <p>আপনার অর্ডার প্রসেস হচ্ছে</p>
+                                            <span class="timeline-time">-</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker">
+                                            <i class="fas fa-shipping-fast"></i>
+                                        </div>
+                                        <div class="timeline-content">
+                                            <h4>শিপড</h4>
+                                            <p>আপনার অর্ডার শিপ করা হয়েছে</p>
+                                            <span class="timeline-time">-</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <div class="timeline-content">
+                                            <h4>ডেলিভার্ড</h4>
+                                            <p>আপনার অর্ডার ডেলিভার করা হয়েছে</p>
+                                            <span class="timeline-time">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Help Section -->
+        <section class="orders-help-section">
+            <div class="container">
+                <div class="help-card">
+                    <div class="help-content">
+                        <h2>অর্ডার সম্পর্কিত সাহায্য</h2>
+                        <p>আপনার অর্ডার সম্পর্কিত যেকোনো সমস্যা বা প্রশ্নের জন্য আমাদের সাথে যোগাযোগ করুন। আমরা সবসময় সাহায্যের জন্য প্রস্তুত।</p>
+                        
+                        <div class="help-actions">
+                            <a href="contact.html" class="btn btn-primary">
+                                <i class="fas fa-headset"></i>
+                                সাপোর্টে যোগাযোগ করুন
+                            </a>
+                            <a href="https://wa.me/880XXXXXXXXX" class="btn btn-secondary" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                হোয়াটসঅ্যাপে মেসেজ করুন
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="help-image">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column brand-info">
+                <div class="footer-logo">
+                    <img src="assets/images/logo.png" alt="TinyStepsBD Logo" class="footer-logo-img">
+                    <span class="footer-brand-name">TinyStepsBD</span>
+                </div>
+                <p class="footer-tagline">আপনার শিশুর প্রথম পদচিহ্নের সঙ্গী</p>
+                <p class="footer-description">
+                    টিনিস্টেপসবিডি - বাংলাদেশের সেরা বেবি জুতা ও স্যান্ডেলের নির্ভরযোগ্য ব্র্যান্ড। 
+                    আমরা ৩ মাস থেকে ৬ বছর বয়সী শিশুদের জন্য উচ্চমানের, আরামদায়ক এবং স্টাইলিশ 
+                    ফুটওয়্যার সরবরাহ করি।
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column quick-links">
+                <h3 class="footer-title">দ্রুত লিংক</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html" class="footer-link">হোমপেজ</a></li>
+                    <li><a href="shop.html" class="footer-link">সকল প্রোডাক্ট</a></li>
+                    <li><a href="about.html" class="footer-link">আমাদের গল্প</a></li>
+                    <li><a href="contact.html" class="footer-link">যোগাযোগ করুন</a></li>
+                    <li><a href="privacy.html" class="footer-link">প্রাইভেসি পলিসি</a></li>
+                    <li><a href="terms.html" class="footer-link">সেবার শর্তাবলী</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column product-categories">
+                <h3 class="footer-title">প্রোডাক্ট ক্যাটাগরি</h3>
+                <ul class="footer-links">
+                    <li><a href="shop.html?category=boys" class="footer-link">ছেলেদের জুতা</a></li>
+                    <li><a href="shop.html?category=girls" class="footer-link">মেয়েদের জুতা</a></li>
+                    <li><a href="shop.html?category=sandals" class="footer-link">বেবি স্যান্ডেল</a></li>
+                    <li><a href="shop.html?category=new" class="footer-link">নতুন অ্যারাইভাল</a></li>
+                    <li><a href="shop.html?category=best" class="footer-link">বেস্টসেলার</a></li>
+                    <li><a href="shop.html?category=offer" class="footer-link">স্পেশাল অফার</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h3 class="footer-title">যোগাযোগ ও সাপোর্ট</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+880 1XXX-XXXXXX</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@tinystepsbd.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>ঢাকা, বাংলাদেশ</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>সকাল ৯টা - রাত ১০টা</span>
+                    </div>
+                </div>
+                
+                <div class="whatsapp-subscribe">
+                    <h4>হোয়াটসঅ্যাপে আপডেট পান</h4>
+                    <form class="subscribe-form">
+                        <input type="tel" placeholder="আপনার মোবাইল নম্বর" class="phone-input" required>
+                        <button type="submit" class="subscribe-btn">সাবস্ক্রাইব করুন</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p class="copyright">
+                    &copy; 2024 TinyStepsBD. সকল অধিকার সংরক্ষিত।
+                </p>
+                <div class="payment-methods">
+                    <span>পেমেন্ট মেথড:</span>
+                    <span class="payment-badge">ক্যাশ অন ডেলিভারি</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Help Button -->
+    <div class="whatsapp-help">
+        <a href="https://wa.me/880XXXXXXXXX" class="whatsapp-link" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/data-manager.js"></script>
+    <script src="assets/js/product.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/checkout.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

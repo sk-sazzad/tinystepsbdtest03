@@ -1,0 +1,100 @@
+<div class="product-card">
+    <div class="product-image-container">
+        <a href="product.html" class="product-image-link">
+            <img 
+                src="" 
+                alt="Product Image" 
+                class="product-image"
+                loading="lazy"
+                onerror="this.src='assets/images/placeholder.jpg'"
+            >
+        </a>
+        
+        <!-- Product Badges -->
+        <div class="product-badges">
+            <span class="badge new-badge" style="display: none;">নতুন</span>
+            <span class="badge bestseller-badge" style="display: none;">বেস্টসেলার</span>
+            <span class="badge discount-badge" style="display: none;">অফার</span>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="product-actions">
+            <button class="action-btn wishlist-btn" aria-label="Add to Wishlist">
+                <i class="far fa-heart"></i>
+            </button>
+            <button class="action-btn quick-view-btn" aria-label="Quick View">
+                <i class="far fa-eye"></i>
+            </button>
+        </div>
+
+        <!-- Add to Cart Button -->
+        <button class="add-to-cart-btn">
+            <i class="fas fa-shopping-cart"></i>
+            কার্টে যোগ করুন
+        </button>
+    </div>
+
+    <div class="product-info">
+        <!-- Product Category -->
+        <div class="product-category">
+            <span class="category-badge"></span>
+        </div>
+
+        <!-- Product Name -->
+        <h3 class="product-name">
+            <a href="product.html" class="product-name-link"></a>
+        </h3>
+
+        <!-- Product Description (Short) -->
+        <p class="product-short-description"></p>
+
+        <!-- Product Variants -->
+        <div class="product-variants">
+            <div class="size-variant">
+                <span class="variant-label">সাইজ:</span>
+                <span class="size-range"></span>
+            </div>
+            <div class="color-variant">
+                <span class="variant-label">রং:</span>
+                <div class="color-options"></div>
+            </div>
+        </div>
+
+        <!-- Price Section -->
+        <div class="product-pricing">
+            <div class="current-price">
+                ৳<span class="price-amount"></span>
+            </div>
+            <div class="original-price" style="display: none;">
+                ৳<span class="original-price-amount"></span>
+            </div>
+        </div>
+
+        <!-- Rating Section -->
+        <div class="product-rating">
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <span class="rating-count">(0 Reviews)</span>
+        </div>
+
+        <!-- Stock Status -->
+        <div class="stock-status">
+            <span class="in-stock" style="display: none;">
+                <i class="fas fa-check-circle"></i>
+                স্টক আছে
+            </span>
+            <span class="out-of-stock" style="display: none;">
+                <i class="fas fa-times-circle"></i>
+                স্টক শেষ
+            </span>
+        </div>
+    </div>
+
+    <!-- Product ID (Hidden) -->
+    <input type="hidden" class="product-id" value="">
+</div>
